@@ -3,16 +3,16 @@
 echo "Starting installation of the environment !"
 
 # Update the system
-sudo apt update
-sudo apt upgrade -y
+sudo apt update -q
 
 # Install the necessary packages
 echo "Installing the necessary packages"
-sudo apt install -y unzip wget curl git
+sudo apt install -q -y unzip wget curl git
 
 # Install zsh
 echo "Installing zsh"
-sudo apt install -y zsh
+sudo apt install -q -y zsh
+echo "Setting zsh as the default shell"
 chsh -s $(which zsh)
 
 # Install Oh My Zsh
@@ -30,7 +30,8 @@ fc-cache -f -v
 
 # Install Starship
 echo "Installing Starship"
-curl -fsSL https://starship.rs/install.sh | sh
+curl -fsSL -o install.sh https://starship.rs/install.sh
+sh install.sh -y
 
 # Copy Starship configuration file
 echo "Copying Starship configuration file"
