@@ -4,7 +4,7 @@
 LIGHTBLUE='\033[1;34m'
 NC='\033[0m' # No Color
 
-echo -e "${LIGHTBLUE}Starting installation of the environment !${NC}"
+echo "${LIGHTBLUE}Starting installation of the environment !${NC}"
 
 # Update the system
 sudo apt update -q
