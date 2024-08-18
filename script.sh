@@ -13,7 +13,7 @@ print_title "Setting up the terminal"
 
 # Update the system
 print_title "Updating the system"
-sudo apt update -q
+sudo apt update -qq
 
 # Install the necessary packages
 print_title "Installing the necessary packages"
