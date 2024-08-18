@@ -76,5 +76,10 @@ echo "" >> ~/.zshrc
 echo "# Load aliases" >> ~/.zshrc
 echo "source ~/.aliases" >> ~/.zshrc
 
+# Usefull apps
+print_title "Installing usefull apps"
+sudo apt install -y btop neofetch zoxide
+
+# END
 print_title "Finished setting up the terminal"
  
