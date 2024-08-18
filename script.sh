@@ -4,27 +4,32 @@
 LIGHTBLUE='\033[1;34m'
 NC='\033[0m' # No Color
 
-echo "${LIGHTBLUE}Starting installation of the environment !${NC}"
+# Function to print titles
+print_title() {
+    echo "\n\n${LIGHTBLUE}$1${NC}"
+}
+
+print_title "Setting up the terminal"
 
 # Update the system
+print_title "Updating the system"
 sudo apt update -q
 
 # Install the necessary packages
-echo "${LIGHTBLUE}Installing the necessary packages${NC}"
+print_title "Installing the necessary packages"
 sudo apt install -q -y unzip wget curl git
 
 # Install zsh
-echo "${LIGHTBLUE}Installing zsh${NC}"
+print_title "Installing zsh"
 sudo apt install -q -y zsh
-echo "Setting zsh as the default shell"
 chsh -s $(which zsh)
 
 # Install Oh My Zsh
-echo "${LIGHTBLUE}Installing Oh My Zsh${NC}"
+print_title "Installing Oh My Zsh"
 sh -c "$(wget https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh -O -)"
 
 # Install Nerd Fonts Jetbrains Mono
-echo "${LIGHTBLUE}Installing Nerd Fonts Jetbrains Mono${NC}"
+print_title "Installing Nerd Fonts Jetbrains Mono"
 wget https://github.com/ryanoasis/nerd-fonts/releases/download/v3.2.1/JetBrainsMono.zip -q
 sudo unzip JetBrainsMono.zip -d /usr/share/fonts
 sudo rm /usr/share/fonts/readme.md
@@ -33,18 +38,17 @@ rm JetBrainsMono.zip
 fc-cache -f -v
 
 # Install Starship
-echo "${LIGHTBLUE}Installing Starship${NC}"
+print_title "Installing Starship"
 curl -fsSL -o install.sh https://starship.rs/install.sh
 sh install.sh -y
 rm install.sh
 
 # Copy Starship configuration file
-echo "${LIGHTBLUE}Copying Starship configuration file${NC}"
 mkdir -p ~/.config
 cp starship.toml ~/.config/starship.toml
 
 # Edit the .zshrc file
-echo "${LIGHTBLUE}Editing the .zshrc file${NC}"
+print_title "Editing the .zshrc file"
 echo "eval $(starship init zsh)" >> ~/.zshrc
 
 # Install lsdeluxe
@@ -52,7 +56,7 @@ echo "${LIGHTBLUE}Installing lsdeluxe${NC}"
 sudo apt install -y lsd
 
 # Install Zsh plugins
-echo "${LIGHTBLUE}Installing Zsh plugins${NC}"
+print_title "Installing Zsh plugins"
 # Zsh-autosuggestions
 git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
 # Zsh-syntax-highlighting
@@ -61,13 +65,16 @@ git clone https://github.com/zsh-users/zsh-syntax-highlighting ${ZSH_CUSTOM:-~/.
 git clone https://github.com/fdellwing/zsh-bat ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-bat
 
 # Edit the .zshrc file
-echo "${LIGHTBLUE}Editing the .zshrc file${NC}"
+print_title "Editing the .zshrc file"
 plugins="plugins=(git zsh-autosuggestions zsh-syntax-highlighting sudo docker docker-compose z colored-man-pages)"
 sed -i.bak '/^plugins=(/c\'"$plugins" ~/.zshrc
 
 # Copy aliases file
-echo "${LIGHTBLUE}Copying aliases file${NC}"
+print_title "Copying aliases file"
 cp .aliases ~/.aliases
 echo "" >> ~/.zshrc
 echo "# Load aliases" >> ~/.zshrc
 echo "source ~/.aliases" >> ~/.zshrc
+
+print_title "Finished setting up the terminal"
+ 
