@@ -31,7 +31,7 @@ sh -c "$(wget https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh -O 
 # Install Nerd Fonts Jetbrains Mono
 print_title "Installing Nerd Fonts Jetbrains Mono"
 wget https://github.com/ryanoasis/nerd-fonts/releases/download/v3.2.1/JetBrainsMono.zip -q
-sudo unzip JetBrainsMono.zip -d /usr/share/fonts
+sudo unzip -q JetBrainsMono.zip -d /usr/share/fonts
 sudo rm /usr/share/fonts/readme.md
 sudo rm /usr/share/fonts/OFL.txt
 rm JetBrainsMono.zip
