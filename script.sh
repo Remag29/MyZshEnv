@@ -55,6 +55,10 @@ echo "eval $(starship init zsh)" >> ~/.zshrc
 echo "${LIGHTBLUE}Installing lsdeluxe${NC}"
 sudo apt install -y lsd
 
+# Install batcat
+echo "${LIGHTBLUE}Installing batcat${NC}"
+sudo apt install -y bat
+
 # Install Zsh plugins
 print_title "Installing Zsh plugins"
 # Zsh-autosuggestions
@@ -66,7 +70,7 @@ git clone https://github.com/fdellwing/zsh-bat ${ZSH_CUSTOM:-~/.oh-my-zsh/custom
 
 # Edit the .zshrc file
 print_title "Editing the .zshrc file"
-plugins="plugins=(git zsh-autosuggestions zsh-syntax-highlighting sudo docker docker-compose z colored-man-pages)"
+plugins="plugins=(git zsh-autosuggestions zsh-syntax-highlighting sudo docker docker-compose z colored-man-pages zsh-bat)"
 sed -i.bak '/^plugins=(/c\'"$plugins" ~/.zshrc
 
 # Copy aliases file
