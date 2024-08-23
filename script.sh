@@ -52,12 +52,16 @@ print_title "Editing the .zshrc file"
 echo "eval $(starship init zsh)" >> ~/.zshrc
 
 # Install lsdeluxe
-echo "${LIGHTBLUE}Installing lsdeluxe${NC}"
+print_title "Installing lsdeluxe"
 sudo apt install -y lsd
 
 # Install batcat
-echo "${LIGHTBLUE}Installing batcat${NC}"
+print_title "Installing batcat"
 sudo apt install -y bat
+
+# Install ncdu
+print_title "Installing ncdu"
+sudo apt install -y ncdu
 
 # Install Zsh plugins
 print_title "Installing Zsh plugins"
