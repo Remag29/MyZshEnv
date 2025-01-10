@@ -26,6 +26,8 @@ chsh -s $(which zsh)
 
 # Install Oh My Zsh
 print_title "Installing Oh My Zsh"
+export RUNZSH=no
+export CHSH=yes
 sh -c "$(wget https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh -O -)"
 
 # Install Nerd Fonts Jetbrains Mono
