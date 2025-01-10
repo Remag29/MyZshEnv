@@ -63,6 +63,10 @@ sudo apt install -y bat
 print_title "Installing ncdu"
 sudo apt install -y ncdu
 
+# Fzf
+git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
+~/.fzf/install --all
+
 # Install Zsh plugins
 print_title "Installing Zsh plugins"
 # Zsh-autosuggestions
