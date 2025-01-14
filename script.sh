@@ -1,5 +1,9 @@
 #! /bin/bash
 
+# Store logs in a file next to the script
+exec > >(tee -i script.log)
+exec 2>&1
+
 # Difine colors
 LIGHTBLUE='\033[1;34m'
 NC='\033[0m' # No Color
@@ -68,7 +72,7 @@ sudo apt install -y ncdu
 # Install TheFuck
 print_title "Installing TheFuck"
 sudo apt install -y python3-dev python3-pip python3-setuptools
-sudo pip3 install thefuck --user
+pip3 install thefuck --user
 
 # Fzf
 git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
