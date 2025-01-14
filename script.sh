@@ -65,6 +65,11 @@ sudo apt install -y bat
 print_title "Installing ncdu"
 sudo apt install -y ncdu
 
+# Install TheFuck
+print_title "Installing TheFuck"
+sudo apt install -y python3-dev python3-pip python3-setuptools
+sudo pip3 install thefuck --user
+
 # Fzf
 git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 ~/.fzf/install --all
