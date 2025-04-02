@@ -19,6 +19,8 @@ COPY ../../.aliases .
 # Set executable permissions for the script
 RUN chmod +x script.sh
 
+RUN chown -R testuser:testuser ./
+
 # Switch to the non-root user
 USER testuser
 
