@@ -49,14 +49,14 @@ print_validation "Done"
 print_title "Installing zsh"
 print_command "sudo apt install -q -y zsh"
 sudo apt install -q -y zsh
-print_command "chsh -s $(which zsh)"
+print_command "chsh -s \$(which zsh)"
 chsh -s $(which zsh)
 print_validation "Done"
 
 # Install Oh My Zsh ###############################################################################
 print_title "Installing Oh My Zsh"
-print_command "sh -c \"\$(wget https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh -O -)\""
-sh -c "$(wget https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh -O -)"
+print_command "sh -c \"$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)\" \"\" --unattended"
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
 print_validation "Done"
 
 # Install Nerd Fonts Jetbrains Mono
@@ -133,13 +133,13 @@ print_validation "LazyGit installation complete"
 # Install Zsh plugins #############################################################################
 print_title "Installing Zsh plugins"
 # Zsh-autosuggestions
-print_command "git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions"
+print_command "git clone https://github.com/zsh-users/zsh-autosuggestions \${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions"
 git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
 # Zsh-syntax-highlighting
-print_command "git clone https://github.com/zsh-users/zsh-syntax-highlighting ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting"
+print_command "git clone https://github.com/zsh-users/zsh-syntax-highlighting \${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting"
 git clone https://github.com/zsh-users/zsh-syntax-highlighting ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
 # Zsh Bat
-print_command "git clone https://github.com/fdellwing/zsh-bat ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-bat"
+print_command "git clone https://github.com/fdellwing/zsh-bat \${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-bat"
 git clone https://github.com/fdellwing/zsh-bat ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-bat
 print_validation "Done"
 
