@@ -1,6 +1,0 @@
-alias cls='clear'
-
-alias ll='lsd -l'
-alias lla='lsd -la'
-
-alias ip='ip -c'
