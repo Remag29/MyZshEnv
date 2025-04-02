@@ -13,17 +13,17 @@ NC='\e[0m'              # No Color
 ###################################################################################################
 # Function to print titles
 print_title() {
-    echo "\n${LIGHTBLUE}$1${NC}\n"
+    echo -e "\n${LIGHTBLUE}$1${NC}\n"
 }
 
 # Function to print commands
 print_command() {
-    echo "+ ${GRAY}$1${NC}\n"
+    echo -e "+ ${GRAY}$1${NC}\n"
 }
 
 # Function to print validation
 print_validation() {
-    echo "${GREEN}$1${NC}\n\n"
+    echo -e "${GREEN}$1${NC}\n\n"
 }
 
 ###################################################################################################
@@ -59,28 +59,28 @@ print_validation "Done"
 
 # Install Nerd Fonts Jetbrains Mono
 print_title "Installing Nerd Fonts Jetbrains Mono"
-print_command "wget https://github.com/ryanoasis/nerd-fonts/releases/download/v3.2.1/JetBrainsMono.zip -q"
-wget https://github.com/ryanoasis/nerd-fonts/releases/download/v3.2.1/JetBrainsMono.zip -q
-print_command "sudo unzip -q JetBrainsMono.zip -d /usr/share/fonts"
-sudo unzip -q JetBrainsMono.zip -d /usr/share/fonts
+print_command "curl -fsSL -o /tmp/JetBrainsMono.zip https://github.com/ryanoasis/nerd-fonts/releases/download/v3.2.1/JetBrainsMono.zip"
+curl -fsSL -o /tmp/JetBrainsMono.zip https://github.com/ryanoasis/nerd-fonts/releases/download/v3.2.1/JetBrainsMono.zip
+print_command "sudo unzip -q /tmp/JetBrainsMono.zip -d /usr/share/fonts"
+sudo unzip -q /tmp/JetBrainsMono.zip -d /usr/share/fonts
 print_command "sudo rm /usr/share/fonts/README.md"
 sudo rm /usr/share/fonts/README.md
 print_command "sudo rm /usr/share/fonts/OFL.txt"
 sudo rm /usr/share/fonts/OFL.txt
-print_command "rm JetBrainsMono.zip"
-rm JetBrainsMono.zip
+print_command "rm /tmp/JetBrainsMono.zip"
+rm /tmp/JetBrainsMono.zip
 print_command "fc-cache -f -v"
 fc-cache -f -v
 print_validation "Done"
 
 # Install Starship ################################################################################
 print_title "Installing Starship"
-print_command "curl -fsSL -o install.sh https://starship.rs/install.sh"
-curl -fsSL -o install.sh https://starship.rs/install.sh
+print_command "curl -fsSL -o /tmp/install.sh https://starship.rs/install.sh"
+curl -fsSL -o /tmp/install.sh https://starship.rs/install.sh
 print_command "sh install.sh -y"
-sh install.sh -y
+sh /tmp/install.sh -y
 print_command "rm install.sh"
-rm install.sh
+rm /tmp/install.sh
 print_validation "Done"
 
 # Copy Starship configuration file
@@ -100,11 +100,9 @@ print_command "sudo apt install -y bat btop lazygit lsd ncdu neofetch yazi zoxid
 sudo apt install -y \
     bat \
     btop \
-    lazygit \
     lsd \
     ncdu \
     neofetch \
-    yazi \
     zoxide
 print_validation "Done"
 
@@ -117,6 +115,19 @@ print_command "~/.fzf/install --all"
 ~/.fzf/install --all
 print_validation "Done"
 
+# Lazygit
+print_command "LAZYGIT_VERSION=\$(curl -s \"https://api.github.com/repos/jesseduffield/lazygit/releases/latest\" | grep -Po '\"tag_name\": *\"v\\K[^\"]*')"
+LAZYGIT_VERSION=$(curl -s "https://api.github.com/repos/jesseduffield/lazygit/releases/latest" | grep -Po '"tag_name": *"v\K[^"]*')
+print_command "curl -Lo /tmp/lazygit.tar.gz \"https://github.com/jesseduffield/lazygit/releases/download/v\${LAZYGIT_VERSION}/lazygit_\${LAZYGIT_VERSION}_Linux_x86_64.tar.gz\""
+curl -Lo /tmp/lazygit.tar.gz "https://github.com/jesseduffield/lazygit/releases/download/v${LAZYGIT_VERSION}/lazygit_${LAZYGIT_VERSION}_Linux_x86_64.tar.gz"
+print_command "tar -xf /tmp/lazygit.tar.gz -C /tmp lazygit"
+tar -xf /tmp/lazygit.tar.gz -C /tmp lazygit
+print_command "sudo install /tmp/lazygit -D -t /usr/local/bin/"
+sudo install /tmp/lazygit -D -t /usr/local/bin/
+print_command "rm /tmp/lazygit /tmp/lazygit.tar.gz"
+rm /tmp/lazygit /tmp/lazygit.tar.gz
+print_validation "LazyGit installation complete"
+
 # Install Zsh plugins #############################################################################
 print_title "Installing Zsh plugins"
 # Zsh-autosuggestions
@@ -128,6 +139,7 @@ git clone https://github.com/zsh-users/zsh-syntax-highlighting ${ZSH_CUSTOM:-~/.
 # Zsh Bat
 print_command "git clone https://github.com/fdellwing/zsh-bat ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-bat"
 git clone https://github.com/fdellwing/zsh-bat ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-bat
+print_validation "Done"
 
 # Edit the .zshrc file
 # TODO: Adapt with dotfiles repo
