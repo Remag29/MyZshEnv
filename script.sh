@@ -1,6 +1,6 @@
 #! /bin/bash
 
-# Verion : 1.1.1
+# Verion : 1.1.2
 
 ###################################################################################################
 # ENV #############################################################################################
@@ -96,6 +96,7 @@ sudo apt install -y \
   neofetch \
   neovim \
   tmux \
+  yamllint \
   zoxide
 print_validation "Usefull tools installed! (from apt)"
 
