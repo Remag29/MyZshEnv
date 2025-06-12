@@ -1,31 +1,31 @@
 #! /bin/bash
 
-# Verion : 1.1.0
+# Verion : 1.1.2
 
 ###################################################################################################
 # ENV #############################################################################################
 ###################################################################################################
-LIGHTBLUE='\e[1;34m'    # Light Blue Bold
-GREEN='\e[1;32m'        # Green Bold
-GRAY='\e[3;90m'         # Gray Italic
-NC='\e[0m'              # No Color
+LIGHTBLUE='\e[1;34m' # Light Blue Bold
+GREEN='\e[1;32m'     # Green Bold
+GRAY='\e[3;90m'      # Gray Italic
+NC='\e[0m'           # No Color
 
 ###################################################################################################
 # FUNCTIONS #######################################################################################
 ###################################################################################################
 # Function to print titles
 print_title() {
-    echo -e "\n${LIGHTBLUE}$1${NC}\n"
+  echo -e "\n${LIGHTBLUE}$1${NC}\n"
 }
 
 # Function to print commands
 print_command() {
-    echo -e "+ ${GRAY}$1${NC}\n"
+  echo -e "+ ${GRAY}$1${NC}\n"
 }
 
 # Function to print validation
 print_validation() {
-    echo -e "${GREEN}$1${NC}\n\n"
+  echo -e "${GREEN}$1${NC}\n\n"
 }
 
 ###################################################################################################
@@ -89,13 +89,15 @@ print_validation "Starship installed! (not config yet)"
 print_title "Installing usefull tools from apt"
 print_command "sudo apt install -y bat btop lazygit lsd ncdu neofetch yazi zoxide"
 sudo apt install -y \
-    bat \
-    btop \
-    lsd \
-    ncdu \
-    neofetch \
-    tmux \
-    zoxide
+  bat \
+  btop \
+  lsd \
+  ncdu \
+  neofetch \
+  neovim \
+  tmux \
+  yamllint \
+  zoxide
 print_validation "Usefull tools installed! (from apt)"
 
 # Install usefull tools from github ###############################################################
@@ -153,4 +155,3 @@ print_validation "Dotfiles imported!"
 ###################################################################################################
 print_validation "Finished setting up the terminal!"
 print_validation "Please restart your terminal to apply the changes."
- 

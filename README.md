@@ -49,3 +49,8 @@ Le script effectue les actions suivantes :
     ```bash
     ./script.sh
     ```
+
+# Note
+
+Default user and password on the test container is `testuser:testuser`
+
