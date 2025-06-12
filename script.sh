@@ -94,7 +94,7 @@ sudo apt install -y \
   lsd \
   ncdu \
   neofetch \
-  nvim \
+  neovim \
   tmux \
   zoxide
 print_validation "Usefull tools installed! (from apt)"
@@ -154,4 +154,3 @@ print_validation "Dotfiles imported!"
 ###################################################################################################
 print_validation "Finished setting up the terminal!"
 print_validation "Please restart your terminal to apply the changes."
-
