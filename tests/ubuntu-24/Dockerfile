@@ -13,8 +13,6 @@ WORKDIR /home/testuser/MyZshEnv
 
 # Copy the script and configuration files
 COPY ../../script.sh .
-COPY ../../starship.toml .
-COPY ../../.aliases .
 
 # Set executable permissions for the script
 RUN chmod +x script.sh
@@ -26,3 +24,4 @@ USER testuser
 
 # Execute the script
 ENTRYPOINT [ "/bin/bash" ]
+
